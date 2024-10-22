@@ -3,19 +3,19 @@ const fs = require('fs');
 const { createCanvas } = require("canvas");
 const { PDFDocument } = require('pdf-lib');
 
-const IMAGE_WIDTH_MM = 94;
+const IMAGE_WIDTH_MM = 125;
 const IMAGE_HEIGHT_MM = 75;
 
 const ONE_INCH_IN_MM = 25.4;
 const ONE_INCH_IN_POINTS = 72;
 
-const A3_WIDTH_MM = 297;
-const A3_HEIGHT_MM = 420;
+const PAGE_WIDTH_MM = 125;
+const PAGE_HEIGHT_MM = 75;
 
-const MARGIN_MM = 5;
-const SPACING_MM = 2;
+const MARGIN_MM = 0;
+const SPACING_MM = 0;
 
-const TABLE_WITH_DATA_PATH = './test.xlsx';
+const TABLE_WITH_DATA_PATH = './volunteers.xlsx';
 const OUTPUT_FOLDER_PATH = '/_output';
 const IMAGES_FOLDER_PATH = OUTPUT_FOLDER_PATH + '/images';
 const OUTPUT_PDF_PATH = OUTPUT_FOLDER_PATH + '/output.pdf';
@@ -136,8 +136,8 @@ function convertMmToPoints(mm) {
 async function createPdfWithImages(imagePaths, outputPdfPath) {
     const pdfDoc = await PDFDocument.create();
   
-    const pageWidth = convertMmToPoints(A3_WIDTH_MM);
-    const pageHeight = convertMmToPoints(A3_HEIGHT_MM);
+    const pageWidth = convertMmToPoints(PAGE_WIDTH_MM);
+    const pageHeight = convertMmToPoints(PAGE_HEIGHT_MM);
 
     const imageWidth = convertMmToPoints(IMAGE_WIDTH_MM);
     const imageHeight = convertMmToPoints(IMAGE_HEIGHT_MM);
